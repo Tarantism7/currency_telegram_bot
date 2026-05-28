@@ -1,5 +1,20 @@
 plugins {
     id 'java'
+    id "org.springframework.boot" version "4.0.6"
+    id "io.spring.dependency-management" version "1.1.7"
+    id "io.freefair.lombok" version "9.5.0"
+    id "org.hibernate.orm" version "7.4.0.Final"
+}
+
+ext {
+    springBootStarterVersion = '4.0.6'
+    springOrmVersion = '7.0.7'
+    postgresqlDriverVersion = '42.7.11'
+    telegramBotsVersion = '6.9.7.1'
+    telegramBotExtensionsVersion = '6.9.7.1'
+    jaxbApiBindVersion = '2.3.1'
+    logbackClassicVersion = '1.5.32'
+    logbackCoreVersion = '1.5.32'
 }
 
 group = 'com.tarantism7'
@@ -10,6 +25,21 @@ repositories {
 }
 
 dependencies {
+    implementation "org.springframework.boot:spring-boot-starter:$springBootStarterVersion"
+    implementation "org.springframework:spring-orm:$springOrmVersion"
+
+    implementation "org.telegram:telegrambots:$telegramBotsVersion"
+    implementation "org.telegram:telegrambotsextensions:$telegramBotExtensionsVersion"
+
+    implementation "org.postgresql:postgresql:$postgresqlDriverVersion"
+
+    implementation "javax.xml.bind:jaxb-api:$jaxbApiBindVersion"
+
+    //LOGGING
+    implementation "ch.qos.logback:logback-classic:$logbackClassicVersion"
+    implementation "ch.qos.logback:logback-core:$logbackCoreVersion"
+
+    //TEST
     testImplementation platform('org.junit:junit-bom:6.0.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
